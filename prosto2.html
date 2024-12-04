@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <style>
+        /* Стили для формы */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        } */
+        input {
+            width: 95%;
+            padding: 15px;
+            margin: 17px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container {
+            margin-left: 450px;
+        }
+        .ff {
+            width: 25%;
+            padding: 10px;
+            background-color: #0fa53c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .ff :hover{
+            background-color: #0fa53c;
+        }
+        .reg {
+            width: 15%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reg :hover {
+            background-color: #0056b3;
+        }
+        .on {
+            width: 13%;
+            padding: 10px;
+            background-color: rgb(253, 197, 15);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #registerForm {
+            width: 47%;
+        }
+    .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: red; /* Оранжевый для восклицательного знака */
+    transition: color 0.3s ease;
+    margin-top: 7px;
+    font-size: 25px;
+    padding: 16px;
+}
+.icon.valid {
+    color: #4caf50; /* Зеленый для галочки */
+}
+
+.notification {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+    color: #4caf50;
+}
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <button onclick="page19()" class="on">Əsas sahifə</button>
+    <h2>Hesab yaratmaq</h2>
+    <form id="registerForm">
+
+        <label class="ad" for="name">Ad:</label> 
+        <input type="text" id="name" placeholder="name">
+        <span class="icon" id="icon1">!</span>
+
+        <label class="tele" for="phone">Telefon:</label>
+        <input type="text" id="phone" placeholder="000-000-0000">
+        <span class="icon" id="icon2">!</span>
+
+        <label class="ist" for="username">İstifadəçi adi:</label>
+        <input type="text" id="username" placeholder="username">
+        <span class="icon" id="icon3">!</span>
+
+        <label class="shif" for="code">Şifrə:</label>
+        <input type="password" id="password" placeholder="password">
+        <span class="icon" id="icon4">!</span>
+
+        <div class="notification" id="notification">Все данные сохранены!</div>
+        <button type="submit" class="ff">Hesab yarat</button>
+    </form>
+    <p>Artiq mövcud hesabin var? <a href="prosto1.html"><button class="reg">Hesaba daxil ol</button></a></p>
+
+</div>
+
+<script>
+
+    function page19() {
+        window.location.href = "fainalyproject.html";
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Сохранение данных в localStorage (для простоты)
+        localStorage.setItem('name', name);
+        localStorage.setItem('phone', phone);
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        // alert('Регистрация успешна!');
+
+        if (name && phone && username && password) {
+        // Вывод уведомления
+        const notification = document.getElementById("notification");
+        notification.style.display = "block";
+        setTimeout(() => {
+            notification.style.display = "none";
+        }, 3000);
+
+        // Логика сохранения данных может быть добавлена здесь (например, отправка на сервер)
+        console.log("Данные сохранены:", { name, phone, username, password });
+    } else {
+        alert("Пожалуйста, заполните все поля.");
+    }
+});
+
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Сохранение данных в localStorage (для простоты)
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+    alert('Регистрация успешна!');
+    window.location.href = 'prosto1.html'; // Перенаправление на страницу входа
+});
+
+</script>
+
+</body>
+</html>

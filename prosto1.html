@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <style>
+        /* Стили для формы */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        .form-container {
+            margin-left: 300px;
+        }
+        input {
+            width: 95%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            border-color: #0fa53c;
+            background: #f9f9f9 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16"><path d="M8 16a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm3.97-9.97a.75.75 0 0 1 1.08 1.04l-4.5 5.5a.75.75 0 0 1-1.08 0l-2.5-2.5a.75.75 0 1 1 1.08-1.04l1.97 1.97 4.45-5.47z"/></svg>') no-repeat right 10px center;
+
+        }
+        .ff {
+            width: 35%;
+            padding: 10px;
+            background-color: #0fa53c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .ff :hover{
+            background-color: #0fa53c;
+        }
+        .reg {
+            width: 17%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reg :hover {
+            background-color: #0056b3;
+        }
+        .on {
+            width: 15%;
+            padding: 10px;
+            background-color: rgb(253, 197, 15);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #loginForm {
+            width: 55%;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <button onclick="page18()" class="on">Əsas sahifə</button>
+    <h2>Hesaba daxil olmaq</h2>
+    <form id="loginForm">
+        <label class="ad" for="name">İstifadəçi adi:</label> 
+        <input type="text" id="loginUsername">
+
+        <label class="ad" for="name">Şifrə:</label> 
+        <input type="password" id="loginPassword">
+        
+        <button type="submit" class="ff">Hesaba daxil ol</button>
+    </form>
+    <p>Hesabin yoxdur? <a href="prosto2.html"><button class="reg">Hesab yarat</button></a></p>
+</div>
+
+<script>
+
+    // document.getElementById('loginForm').addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //     const username = document.getElementById('loginUsername').value;
+    //     const password = document.getElementById('loginPassword').value;
+
+    //     // Проверка данных
+    //     const storedUsername = localStorage.getItem('input3');
+    //     const storedPassword = localStorage.getItem('input4');
+
+    //     if (username === storedUsername && password === storedPassword) {
+    //         alert('Вход успешен!');
+    //         // Здесь можно перенаправить на другую страницу
+    //     } else {
+    //         alert('Неверное имя пользователя или пароль.');
+    //     }
+    // });
+
+
+    // document.getElementById('loginForm').getElementById('submit', function(event) {
+    //     event.preventDefault(); // Предотвращаем отправку формы
+    //     const username = document.getElementById('loginUsername').value;
+    //     // Сохраняем имя пользователя в localStorage
+    //     localStorage.setItem('loginUsername', username);
+       
+    // });
+
+
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // Проверка данных
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+
+    if (username === storedUsername && password === storedPassword) {
+        alert('Вход успешен!');
+        window.location.href = 'index775.html'; // Здесь можно перенаправить на другую страницу
+        
+    } else {
+        alert('Неверное имя пользователя или пароль.');
+    }
+});
+
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем отправку формы
+        const username = document.getElementById('loginUsername').value;
+        // Сохраняем имя пользователя в localStorage
+        localStorage.setItem('loginUsername', username);
+       
+    });
+
+    function page18() {
+    window.location.href = "fainalyproject.html";
+    
+    } 
+</script>
+
+</body>
+</html>

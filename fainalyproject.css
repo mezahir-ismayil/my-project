@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.p1 {
+    color: white;
+    margin-top: -105px;
+}
+.p2 {
+    color: black;
+    margin-top: -110px;
+}
+.p3 {
+    color: black;
+    margin-top: -100px;
+}
+.p4 {
+    color: black;
+    margin-top: -50px;
+}
+.p5 {
+    color: black;
+    margin-top: -50px;
+}
+.img1{
+    width: 330px;
+    height: 340px;
+    background-color: white;
+}
+.img2 {
+    width: 430px;
+    height: 420px;
+    background-color: white;
+}
+.img3 {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+}
+.img4 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 450px;
+    height: 260px;
+    background-color: white;
+}
+.img5 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 320px;
+    height: 320px;
+    background-color: white;
+}
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1, h2 {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Стили кнопок */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Карусель */
+.carousel-inner img {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    height: 50%; /* Заполнение всей высоты карусели */
+    width: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgb(226, 24, 24); /* Красный фон стрелок */
+    opacity: 0.8;
+    width: 27px;
+    margin: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgb(231, 77, 77); /* Темный красный при наведении */
+    opacity: 1;
+}
+/* Таблицы */
+table {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Форма */
+.form-control {
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #1ab10c, #09bd12);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #b85b0f, #06a7d8);
+}
+
+/* Дополнительно */
+#shopNow {
+    background: linear-gradient(90deg, #e4e710, #f5f108);
+    border: none;
+    color: black;
+}
+
+#shopNow:hover {
+    background: linear-gradient(90deg, #0799ee, #a90af3);
+}

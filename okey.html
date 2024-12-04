@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="okey.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск компьютеров</title>
+    <style>
+    </style>
+</head>
+<body>
+    <button id="shopNow" class="btn btn-primary btn-lg" onclick="startShopping17()">Əsas sahifə</button>
+    <div class="container">
+        <div id="search-container">
+            <input type="text" id="search" placeholder="Поиск..." oninput="searchComputer()">
+            <div class="brand" onclick="showComputers('HP')">HP</div>
+            <div class="brand" onclick="showComputers('Lenovo')">Lenovo</div>
+            <div class="brand" onclick="showComputers('Acer')">Acer</div>
+            <div class="brand" onclick="showComputers('Sony')">Sony</div>
+            <div class="brand" onclick="showComputers('Asus')">Asus</div>
+            <div class="brand" onclick="showComputers('Dell')">Dell</div>
+            <div class="brand" onclick="showComputers('Macbook')">Macbook</div>
+        </div>
+
+        <div id="computers-list">
+            <!-- Here will appear the computers -->
+        </div>
+    </div>
+
+    <div id="computer-details" class="computer-details">
+        <!-- Computer details will be shown here -->
+    </div>
+
+    <script src="okey.js"></script>
+
+</body>
+</html>

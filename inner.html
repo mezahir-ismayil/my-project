@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Компьютеры</title>
+    <style>
+        /* Стиль для модального окна и таблицы.  Здесь нужно добавить свой собственный CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        option {
+    margin-left: 100px;
+}
+.div100 {
+    display: flex;
+    width: 300px;
+    font-size: 18px;
+}
+.show {
+    padding: 5px;
+}
+.enter {
+    padding: 5px;
+}
+select {
+    width: 65px;
+    height: 25px;
+}
+.div200 {
+    display: flex;
+    width: 200px;
+    font-size: 18px;
+    margin-left: 1100px;
+}
+
+    .btn9 {
+        background: linear-gradient(90deg, #f0e117, #fffb00);
+        border: none;
+        color: black;
+        transition: all 0.3s ease;
+        width: 140px;
+        height: 45px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    } 
+
+    .bt {
+    background: linear-gradient(90deg, #1751f0, #1242c5);
+    border: none;
+    color: black;
+    transition: all 0.3s ease;
+    width: 145px;
+    height: 45px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+
+    option {
+    margin-left: 100px;
+
+}
+.div100 {
+    display: flex;
+    width: 300px;
+    font-size: 18px;
+}
+.div200 {
+    display: flex;
+    width: 300px;
+    font-size: 20px;
+    margin-left: 1000px;
+    margin-top: -50px;
+    
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn9" onclick="sss()">Əsas sahifə</button>
+        <button id="openModal" class="bt" onclick="ee()">Yeni Komputer</button>
+
+        <div class="div100"> 
+            <p class="show">Show</p>
+            <select id="languageSwitcher">
+               <option value="number">5</option>
+                 <option value="number">6</option>
+                 <option value="number">7</option>
+                 <option value="number">8</option>
+                 <option value="number">9</option>
+                 <option value="number">10</option>
+             </select>
+             <p class="enter">entrise</p>
+        </div>
+
+        <div class="div200">
+            <p>Search:</p> <input type="text">
+        </div>
+       
+        <table id="computers-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ad</th>
+                    <th>Model adları</th>
+                    <th>Şəkil</th>
+                    <th>Qiymət</th>
+                    <th>Əmaliyyatlar</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <label for="computerPassword">Айди</label><br>
+                <input type="text" id="computerPassword"><br>
+                <label for="computerName">Названия модели</label><br>
+                <input type="text" id="computerName"><br>
+                <label for="computerId">Имя компьютера:</label><br>
+                <input type="text" id="computerId"><br>
+                <label for="computerImage">Картинка (URL):</label><br>
+                <input type="text" id="computerImage"><br>
+                <label for="computerPrice">Цена:</label><br>
+                <input type="number" id="computerPrice"><br>
+
+                <button id="addComputer">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("myModal");
+        const btn = document.getElementById("openModal");
+        const span = document.getElementById("closeModal");
+        const addComputerButton = document.getElementById("addComputer");
+        const computersTable = document.getElementById("computers-table").querySelector("tbody");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        addComputerButton.onclick = function() {
+            const computerPassword = document.getElementById("computerPassword").value;
+            const computerName = document.getElementById("computerName").value;
+            const computerId = document.getElementById("computerId").value;
+            const computerImage = document.getElementById("computerImage").value;
+            const computerPrice = document.getElementById("computerPrice").value;
+
+            // Проверка на пустые поля (можно добавить более строгую валидацию)
+            if (!computerPassword || !computerName || !computerId || !computerImage || !computerPrice) {
+                alert("Заполните все поля!");
+                return;
+            }
+
+            let computers = JSON.parse(localStorage.getItem("computers")) || [];
+            computers.push({password: computerPassword, id: computerId, name: computerName, image: computerImage, price: computerPrice});
+            localStorage.setItem("computers", JSON.stringify(computers));
+            updateTable();
+            modal.style.display = "none";
+        }
+
+
+        function updateTable() {
+            let computers = JSON.parse(localStorage.getItem("computers")) || [];
+            computersTable.innerHTML = ''; // Очищаем таблицу перед обновлением
+
+            computers.forEach(computer => {
+                let row = computersTable.insertRow();
+                let passwordCell = row.insertCell();
+                let idCell = row.insertCell();
+                let nameCell = row.insertCell();
+                let imageCell = row.insertCell();
+                let priceCell = row.insertCell();
+                let actionsCell = row.insertCell();
+
+                passwordCell.textContent = computer.password;
+                idCell.textContent = computer.id;
+                nameCell.textContent = computer.name;
+                imageCell.innerHTML = `<img src="${computer.image}" alt="${computer.name}" width="50">`; //добавлено отображение картинки
+                priceCell.textContent = computer.price;
+                actionsCell.innerHTML = `<button onclick="ccc()">Удалить</button>`; // можно добавить функционал удаления
+            });
+        }
+        updateTable(); // Загрузка данных при загрузке страницы
+
+
+function ccc() {
+    
+    localStorage.removeItem('computers');
+    
+}
+function sss() {
+            window.location.href = "index775.html";
+}
+       
+    </script>
+
+</body>
+</html>
