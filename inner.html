@@ -19,11 +19,13 @@
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: #a9d4f1;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 30%;
+            width: 50%;
+            height: 55%;
+            border-radius: 6px;
         }
 
         .close {
@@ -118,6 +120,38 @@ select {
     margin-top: -50px;
     
 }
+.parent {
+    margin-left: 400px;
+    font-size: 20px;
+    margin-top: -228px;
+
+}
+.div7 {
+    margin-left: 70px;
+    font-size: 20px;
+}
+#addComputer {
+    background-color: #1242c5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 110px;
+    height: 30px;
+    margin-left: 60px;
+    cursor: pointer;
+    }
+#remove {
+    background-color: #f0cd0a;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 140px;
+    height: 35px;
+    margin-left: 10px;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -157,19 +191,39 @@ select {
 
         <div id="myModal" class="modal">
             <div class="modal-content">
+                <div class="div7">
                 <span id="closeModal" class="close">&times;</span>
-                <label for="computerPassword">Айди</label><br>
-                <input type="text" id="computerPassword"><br>
-                <label for="computerName">Названия модели</label><br>
-                <input type="text" id="computerName"><br>
-                <label for="computerId">Имя компьютера:</label><br>
+                <label for="computerPassword">ID</label><br> 
+                <input type="text" id="computersName"><br>
+                <label for="computerName">Model:</label><br>
+                <input type="text" id="computerModel"><br>
+                <label for="computerId">Ad:</label><br>
                 <input type="text" id="computerId"><br>
-                <label for="computerImage">Картинка (URL):</label><br>
+                <label for="computerImage">Şəkil (URL):</label><br>
                 <input type="text" id="computerImage"><br>
-                <label for="computerPrice">Цена:</label><br>
+                <label for="computerPrice">Qiymət:</label><br>
                 <input type="number" id="computerPrice"><br>
+            </div>
 
-                <button id="addComputer">Добавить</button>
+            <div class="parent">
+                <label for="computerPassword">Əmali yaddaş (GB):</label><br> 
+                <input type="text" id="computerMemory"><br>
+                <label for="computerName">Mərkəzi prosessor:</label><br>
+                <input type="text" id="computerProsessor"><br>
+                <label for="computerId">Daimi yaddaş (GB):</label><br>
+                <input type="text" id="computerTip"><br>
+                <label for="computerImage">Əmaliyyat sistemi:</label><br>
+                <input type="text" id="computerSistem"><br>
+                <label for="computerPrice">Video kart (GB):</label><br>
+                <input type="number" id="computerVideokart"><br>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+                <button id="addComputer">Yadda saxla</button>
+                <button id="remove" onclick="remove()">Məlumatlari sifirla</button>
+
             </div>
         </div>
     </div>
@@ -239,6 +293,15 @@ select {
         }
         updateTable(); // Загрузка данных при загрузке страницы
 
+        function remove() {
+            const inputs = document.querySelectorAll('.modal-content input');
+            inputs.forEach((input,) => {
+                input.value = ''; // Clear input fields
+            //   `  localStorage.removeItem(input${index + 1}) `; // Remove data from localStorage
+            });
+            alert('remove successfully!');
+        }
+
 
 function ccc() {
     
@@ -249,6 +312,45 @@ function sss() {
             window.location.href = "index775.html";
 }
        
+addComputerButton.onclick = function() {
+    const computerName = document.getElementById("computerName").value;
+    const computerId = document.getElementById("computerId").value;
+    const computerImage = document.getElementById("computerImage").value;
+    const computerPrice = document.getElementById("computerPrice").value;
+
+    // Проверка на пустые поля (можно добавить более строгую валидацию)
+    if (!computerName || !computerId || !computerImage || !computerPrice) {
+        alert("Заполните все поля!");
+        return;
+    }
+
+    let computers = JSON.parse(localStorage.getItem("computers")) || [];
+    computers.push({id: computerId, name: computerName, image: computerImage, price: computerPrice});
+    localStorage.setItem("computers", JSON.stringify(computers));
+    updateTable();
+    modal.style.display = "none";
+};
+
+
+function updateTable() {
+    let computers = JSON.parse(localStorage.getItem("computers")) || [];
+    computersTable.innerHTML = ''; // Очищаем таблицу перед обновлением
+
+    computers.forEach(computer => {
+        let row = computersTable.insertRow();
+        let idCell = row.insertCell();
+        let nameCell = row.insertCell();
+        let imageCell = row.insertCell();
+        let priceCell = row.insertCell();
+        let actionsCell = row.insertCell();
+
+        idCell.textContent = computer.id;
+        nameCell.textContent = computer.name;
+        imageCell.innerHTML = ` <img src="${computer.image}" alt="${computer.name}" width="50"> `; //добавлено отображение картинки
+        priceCell.textContent = computer.price;
+        actionsCell.innerHTML = `<button  onclick="ccc()">Sil</button>`; // можно добавить функционал удаления
+    });
+};
     </script>
 
 </body>

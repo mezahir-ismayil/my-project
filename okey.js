@@ -154,6 +154,23 @@ function showComputers(brand) {
     });
 }
 
+window.onload = function() {
+    const computers = JSON.parse(localStorage.getItem('computers')) || [];
+    const computersList = document.getElementById('computers-list');
+
+    computers.forEach(computer => {
+        const computerDiv = document.createElement('div');
+        computerDiv.className = 'computer-item';
+        computerDiv.innerHTML = `
+            <img src="${computer.image}" alt="${computer.name}" style="max-width: 100px;">
+            <h3>${computer.name}</h3>
+            <p>номер: ${computer.id}</p>
+            <p>Цена: ${computer.price}</p>
+        `;
+        computersList.appendChild(computerDiv);
+    });
+};
+
 function startShopping17() {
     window.location.href = "index775.html";
 }

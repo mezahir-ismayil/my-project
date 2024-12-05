@@ -269,7 +269,15 @@ table {
             }
     
             function goToLogin() {
-                window.location.href = "fainalyproject.html";
+
+                const inputs = document.querySelectorAll('#loginForm input');
+            inputs.forEach((input,) => {
+                input.value = ''; // Clear input fields
+            //   `  localStorage.removeItem(input${index + 1}) `; // Remove data from localStorage
+            });
+            alert('delete successfully!');
+
+            window.location.href = "fainalyproject.html";
             }
     
             function handleLoginSuccess() {

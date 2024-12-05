@@ -64,10 +64,6 @@ document.getElementById("createAccount")?.addEventListener("click", function () 
                     handleLoginSuccess();
                 }
 
-        // function logout() {
-        //     window.location.reload();
-        // }
-
-        // function startShopping() {
-        //     window.location.href = "computers.html";
-        // }
+        function startShopping() {
+            window.location.href = "okey.html";
+        }
