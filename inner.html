@@ -19,12 +19,12 @@
         }
 
         .modal-content {
-            background-color: #a9d4f1;
-            margin: 15% auto;
+            background-color: #cbe4f5;
+            margin: 8% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 50%;
-            height: 55%;
+            width: 65%;
+            height: 60%;
             border-radius: 6px;
         }
 
@@ -118,17 +118,16 @@ select {
     font-size: 20px;
     margin-left: 1000px;
     margin-top: -50px;
-    
 }
 .parent {
-    margin-left: 400px;
+    margin-left: 450px;
     font-size: 20px;
-    margin-top: -228px;
-
+    margin-top: -240px;
 }
 .div7 {
-    margin-left: 70px;
+    margin-left: 40px;
     font-size: 20px;
+    margin-top: 10px
 }
 #addComputer {
     background-color: #1242c5;
@@ -138,7 +137,8 @@ select {
     font-size: 14px;
     width: 110px;
     height: 30px;
-    margin-left: 60px;
+    margin-left: 40px;
+    margin-top: -10px;
     cursor: pointer;
     }
 #remove {
@@ -149,8 +149,25 @@ select {
     font-size: 14px;
     width: 140px;
     height: 35px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-top: -50px;
     cursor: pointer;
+}
+input {
+    width: 350px;
+    border-radius: 5%;
+    height: 20px;
+}
+.new {
+    color: rgb(3, 3, 3);
+    margin-left: 379px;
+    font-size: 35px;
+}
+.inp {
+    height: 30px;
+    width: 170px;
+    margin-top: 15px;
+    border-radius: 5%;
 }
     </style>
 </head>
@@ -173,7 +190,7 @@ select {
         </div>
 
         <div class="div200">
-            <p>Search:</p> <input type="text">
+            <p>Search:</p> <input class="inp" type="text">
         </div>
        
         <table id="computers-table">
@@ -191,36 +208,35 @@ select {
 
         <div id="myModal" class="modal">
             <div class="modal-content">
+                <div class="new">Yeni</div>
                 <div class="div7">
                 <span id="closeModal" class="close">&times;</span>
                 <label for="computerPassword">ID</label><br> 
-                <input type="text" id="computerPassword"><br>
-                <label for="computerName">Model:</label><br>
+                <input type="number" id="computerPassword"><br>
+                <label for="computerName">Ad:</label><br>
                 <input type="text" id="computerName"><br>
-                <label for="computerId">Ad:</label><br>
+                <label for="computerId">Model:</label><br>
                 <input type="text" id="computerId"><br>
                 <label for="computerImage">Şəkil (URL):</label><br>
                 <input type="text" id="computerImage"><br>
                 <label for="computerPrice">Qiymət:</label><br>
-                <input type="number" id="computerPrice"><br>
+                <input type="text" id="computerPrice"><br>
             </div>
 
             <div class="parent">
                 <label for="computerPassword">Əmali yaddaş (GB):</label><br> 
-                <input type="text" id="computerMemory"><br>
+                <input type="number" id="computerMemory"><br>
                 <label for="computerName">Mərkəzi prosessor:</label><br>
                 <input type="text" id="computerProsessor"><br>
                 <label for="computerId">Daimi yaddaş (GB):</label><br>
-                <input type="text" id="computerTip"><br>
+                <input type="number" id="computerTip"><br>
                 <label for="computerImage">Əmaliyyat sistemi:</label><br>
                 <input type="text" id="computerSistem"><br>
+                <label for="computerNew">Yeni:</label><br>
+                <input type="text" id="computerNew"><br>
                 <label for="computerPrice">Video kart (GB):</label><br>
                 <input type="number" id="computerVideokart"><br>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
                 <button id="addComputer">Yadda saxla</button>
                 <button id="remove" onclick="remove()">Məlumatlari sifirla</button>
 
@@ -255,21 +271,23 @@ select {
             const computerId = document.getElementById("computerId").value;
             const computerImage = document.getElementById("computerImage").value;
             const computerPrice = document.getElementById("computerPrice").value;
+            const computerButton = document.getElementById("computerButton").value;
+
 
             // Проверка на пустые поля (можно добавить более строгую валидацию)
-            if (!computerPassword || !computerName || !computerId || !computerImage || !computerPrice) {
+            if (!computerPassword || !computerName || !computerId || !computerImage || !computerPrice || !computerButton) {
                 alert("Заполните все поля!");
                 return;
             }
 
             let computers = JSON.parse(localStorage.getItem("computers")) || [];
-            computers.push({password: computerPassword, id: computerId, name: computerName, image: computerImage, price: computerPrice});
+            computers.push({password: computerPassword, name: computerName, id: computerId, image: computerImage, price: computerPrice, button: computerButton});
             localStorage.setItem("computers", JSON.stringify(computers));
             updateTable();
             modal.style.display = "none";
         }
 
-
+        
         function updateTable() {
             let computers = JSON.parse(localStorage.getItem("computers")) || [];
             computersTable.innerHTML = ''; // Очищаем таблицу перед обновлением
@@ -281,14 +299,14 @@ select {
                 let nameCell = row.insertCell();
                 let imageCell = row.insertCell();
                 let priceCell = row.insertCell();
-                let actionsCell = row.insertCell();
+                let buttonCell = row.insertCell();
 
                 passwordCell.textContent = computer.password;
-                idCell.textContent = computer.id;
                 nameCell.textContent = computer.name;
+                idCell.textContent = computer.id;
                 imageCell.innerHTML = `<img src="${computer.image}" alt="${computer.name}" width="50">`; //добавлено отображение картинки
                 priceCell.textContent = computer.price;
-                actionsCell.innerHTML = `<button onclick="ccc()">Удалить</button>`; // можно добавить функционал удаления
+                buttonCell.innerHTML = `<button onclick="ccc()">Удалить</button>`; // можно добавить функционал удаления
             });
         }
         updateTable(); // Загрузка данных при загрузке страницы
