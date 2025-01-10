@@ -39,9 +39,9 @@ document.getElementById("createAccount")?.addEventListener("click", function () 
             { username: "user2", password: "pass2" }
         ];
 
-        function startShopping() {
-            alert("Функционал для покупок еще не реализован.");
-        }
+        // function startShopping() {
+        //     alert("Функционал для покупок еще не реализован.");
+        // }
 
         function goToLogin() {
             window.location.href = "prosto1.html";

@@ -40,7 +40,7 @@ body {
 #computers-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgHQl6FKZmqteKWQmzxfvdjX5NE7J7i4oj2A&s);
 }
 .computer {
@@ -114,12 +114,12 @@ body {
 #computers-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 .computer {
     background-color: white;
     width: 200px;
-    height: 200px;
+    height: 220px;
     padding: 10px;
     margin: 10px;
     text-align: center;
@@ -133,15 +133,31 @@ body {
 }
 .computer-details {
     display: none;
-    position: absolute;
+    position: fixed;
+    top: 135%;
+    left: 0;
     background-color: #fff;
     border: 2px solid #ccc;
     padding: 20px;
-    width: 250px;
-    height: 300px;
+    width: 320px;
+    height: 450px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
+    
     z-index: 10;
+}
+.btt {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px grey;
+    width: 100px;
+    margin-top: 25px;
+    margin-left: 35%;
+}
+.computer-details img {
+    height: 300px;
+    width: 300px;
 }
 .computer-details.open {
     display: block;

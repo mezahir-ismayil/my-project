@@ -142,9 +142,49 @@ function showDetails(brand, modelName) {
         <img src="${computer.img}" alt="${computer.name}">
         <p><strong>Характеристики:</strong> ${computer.specs}</p>
         <p>Полное описание и другие детали...</p>
+        <button  class="btt" onclick="closeWin()">çıxmaq</button>
     `;
     computerDetails.classList.add('open');
 }
+
+let modal = document.getElementById("computer-details");
+
+function closeWin() {
+    // document.getElementsByClassName("all")[0].style.display = "none";
+    // computersLis.style.display = "none";
+    // computersLis.classList.remove("open");
+    // all.classList.remove("open");
+    // compList.classList.remove("st");
+    modal.classList.remove("open");
+}
+// window.onclick = function (event) {
+//     // modal.classList.remove("open");
+//     // if(event.target == modal) {
+//     //     // modal.style.display = "none";
+//     // }
+// }
+
+
+
+function showComputersDefault(brand) {
+    const computersList = document.getElementById('computers-list');
+    // computersList.innerHTML = ''; // Clear previous results
+
+    const computers = computersData[brand];
+    computers.forEach(computer => {
+        const computerDiv = document.createElement('div');
+        computerDiv.classList.add('computer');
+        computerDiv.innerHTML = `
+            <img src="${computer.img}" alt="${computer.name}">
+            <h3>${computer.name}</h3>
+            <p>${computer.specs}</p>
+            <button class="details-btn" onclick="showDetails('${brand}', '${computer.name}')">Подробнее</button>
+            
+        `;
+        computersList.appendChild(computerDiv);
+    });
+}
+showComputersDefault("HP");
 
 
 function searchComputer() {
@@ -202,24 +242,29 @@ function showComputers(brand) {
         computersList.appendChild(computerDiv);
     });
 }
-
+if(localStorage.getItem("loginUsername")) {
 window.onload = function() {
     const computers = JSON.parse(localStorage.getItem('computers')) || [];
     const computersList = document.getElementById('computers-list');
 
     computers.forEach(computer => {
         const computerDiv = document.createElement('div');
-        computerDiv.className = 'computer-item';
+        computerDiv.className = 'computer';
         computerDiv.innerHTML = `
             <img src="${computer.image}" alt="${computer.name}" style="max-width: 100px;">
             <h3>${computer.name}</h3>
             <p>номер: ${computer.id}</p>
             <p>Цена: ${computer.price}</p>
-        `;
+            <button class="details-btn" onclick="showDetails('${computer.brand}', '${computer.name}')">Подробнее</button>         `;
         computersList.appendChild(computerDiv);
     });
 };
+}
 
 function startShopping17() {
-    window.location.href = "index775.html";
+    if(localStorage.getItem("loginUsername")) {
+        window.location.href = "index775.html";
+    } else {
+        window.location.href = "fainalyproject.html";
+    }
 }

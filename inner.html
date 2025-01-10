@@ -23,10 +23,19 @@
             margin: 8% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 65%;
-            height: 60%;
+            width: 60%;
+            height: 57%;
             border-radius: 6px;
         }
+
+       .modal-content input {
+        /* padding: 4px; */
+        border: grey 1px solid;
+        outline: none;
+        border-radius: 3px;
+        /* width: 400px; */
+
+       }
 
         .close {
             color: #aaa;
@@ -55,6 +64,7 @@
 }
 .div100 {
     display: flex;
+    align-items: center;
     width: 300px;
     font-size: 18px;
 }
@@ -106,6 +116,12 @@ select {
     option {
     margin-left: 100px;
 
+}
+.div7 select {
+    width: 40.5%;
+    border: grey 1px solid;
+    border-radius: 4px;
+    height: 30px;
 }
 .div100 {
     display: flex;
@@ -185,7 +201,7 @@ input {
                  <option value="number">8</option>
                  <option value="number">9</option>
                  <option value="number">10</option>
-             </select>
+             </select> 
              <p class="enter">entrise</p>
         </div>
 
@@ -198,7 +214,7 @@ input {
                 <tr>
                     <th>ID</th>
                     <th>Ad</th>
-                    <th>Model adları</th>
+                    <!-- <th>Model adları</th> -->
                     <th>Şəkil</th>
                     <th>Qiymət</th>
                     <th>Əmaliyyatlar</th>
@@ -209,14 +225,29 @@ input {
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <div class="new">Yeni</div>
-                <div class="div7">
+                
+            <div class="div7">
                 <span id="closeModal" class="close">&times;</span>
                 <label for="computerPassword">ID</label><br> 
                 <input type="number" id="computerPassword"><br>
                 <label for="computerName">Ad:</label><br>
                 <input type="text" id="computerName"><br>
                 <label for="computerId">Model:</label><br>
-                <input type="text" id="computerId"><br>
+                <select name="" id="computerId">
+                    <option value="Acer">Acer</option>
+                    <option value="HP">HP</option>
+                    <option value="Asus">Asus</option>
+                    <option value="Dell">Dell</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="LG">LG</option>
+                    <option value="Casper">Casper</option>
+                    <option value="Fujitsu">Fujitsu</option>
+                    <option value="Nexus">Nexus</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Toshiba">Toshiba</option>
+                    <option value="Sony">Sony</option>
+                </select> <br>
+                <!-- <input type="text" id="computerId"><br> -->
                 <label for="computerImage">Şəkil (URL):</label><br>
                 <input type="text" id="computerImage"><br>
                 <label for="computerPrice">Qiymət:</label><br>
@@ -237,8 +268,8 @@ input {
                 <label for="computerPrice">Video kart (GB):</label><br>
                 <input type="number" id="computerVideokart"><br>
             </div>
-                <button id="addComputer">Yadda saxla</button>
-                <button id="remove" onclick="remove()">Məlumatlari sifirla</button>
+            <button id="remove" onclick="remove()">Məlumatlari sifirla</button>
+            <button id="addComputer">Yadda saxla</button>
 
             </div>
         </div>

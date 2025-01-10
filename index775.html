@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Главная2</title>
+    <title>Главная</title>
     <style>
         .p1 {
     color: rgb(0, 0, 0);
@@ -271,10 +271,14 @@ table {
             function goToLogin() {
 
                 const inputs = document.querySelectorAll('#loginForm input');
-            inputs.forEach((input,) => {
+            // inputs.forEach(input => {
+                // input.value = ''; // Clear input fields
+                // localStorage.removeItem(input${index + 1});
+            // });
+            inputs.forEach(input => {
                 input.value = ''; // Clear input fields
-            //   `  localStorage.removeItem(input${index + 1}) `; // Remove data from localStorage
             });
+            localStorage.removeItem("loginUsername");
             alert('delete successfully!');
 
             window.location.href = "fainalyproject.html";
